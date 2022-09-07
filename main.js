@@ -13,12 +13,7 @@ const cors = require('cors');
 var app = express();
 require('dotenv').config();
 const { SlashCommandBuilder } = require('@discordjs/builders');
-
-const opts = {
-    interval: 20,
-    logging: true,
-    stopTimes: { start: '00:00', end: '00:00' }
-}
+const axios = require('axios');
 
 app.use(rateLimiter, cors({origin: '*'}));
 
@@ -49,6 +44,19 @@ mongoose.connect(process.env.MONGOOSE, {
 mongoose.connection.on('connected', () => {
     console.log('Mongoose is connected');
 });
+
+function ping() {
+    console.log("ping");
+    axios.get(process.env.BACKEND_LINK)
+    .then(response => {
+        console.log(response.data);
+    })
+    .catch(error => {
+        console.log(error);
+    });
+}
+
+//setInterval(ping, 5500);
 
 loading();
 endpoints.unsubscribe(app);
