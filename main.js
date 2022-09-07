@@ -25,6 +25,10 @@ app.get("/", (req,res) => {
     res.send("ALIVE!");
     });
 
+app.get("/ping", (req,res) => {
+    res.send("PONG");
+    });
+
 client.commands = new Collection();
 
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
