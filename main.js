@@ -7,7 +7,6 @@ const fs = require('fs');
 const mongoose = require('mongoose');
 const loading = require('./mongodb/loading');
 const endpoints = require('./webEndpoints');
-const {wakeDyno} = require('heroku-keep-awake');
 const express = require("express");
 const rateLimiter = require ('./middlewares/rateLimiter');
 const cors = require('cors');
@@ -25,7 +24,6 @@ app.use(rateLimiter, cors({origin: '*'}));
 
 app.listen(process.env.PORT || 80, () => {
     console.log("Server running on port " + process.env.PORT);
-    wakeDyno(process.env.BACKEND_LINK, opts);
    });
 
 app.get("/", (req,res) => {
