@@ -1,0 +1,35 @@
+{
+  "name": "photo-sender",
+  "version": "1.0.0",
+  "description": "Discord bot for sending emails with photos to subscribed emails",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tadas Adomaitis",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/builders": "^0.12.0",
+    "@discordjs/rest": "^0.3.0",
+    "cheerio": "^1.0.0-rc.10",
+    "cors": "^2.8.5",
+    "cron": "^1.8.2",
+    "discord.js": "^13.6.0",
+    "dotenv": "^16.0.0",
+    "email-validator": "^2.0.4",
+    "express": "^4.17.3",
+    "express-rate-limit": "^5.5.1",
+    "heroku-keep-awake": "^1.1.2",
+    "heroku-self-ping": "^2.0.1",
+    "mongoose": "^5.13.14",
+    "node-fetch": "^2.6.7",
+    "nodemailer": "^6.7.3",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6"
+  },
+  "engines": {
+    "node": "16.14.2",
+    "npm": "*"
+  }
+}
