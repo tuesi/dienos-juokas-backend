@@ -19,7 +19,13 @@ module.exports = {
             text: 'Dienos Juokas!',
             html: "<h1>Šiandienos juokas</h1>" +
             "<p>"+ joke + "</p>" +
-            "<a href=\"https://gyvunuerotika.herokuapp.com/unsubscribe?email="+email+"\"><small>Unsubscribe</small></a>",
+            "<span>" + "Dienos juokas kiekvieną dieną!" + "</span>" +
+            "<br>"+
+            "<a href=\"https://www.dienosjuokas.tk\"><big>dienosjuokas.tk</big></a>" +
+            "<br>" + 
+            "<br>" + 
+            "<br>" + 
+            "<a href=\""+ process.env.BACKEND_LINK + "/unsubscribe?email="+email+"\"><small>Unsubscribe</small></a>",
         };
     
         transporter.sendMail(mailOptions, function(error, info){
