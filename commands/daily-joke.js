@@ -13,7 +13,7 @@ module.exports = {
             .setTitle('Dienos Juokas')
             .setDescription(`${joke.joke}`);
            
-        if(date.getHours() >= 11){
+        if(date.getHours() >= 10){
             interaction.reply({embeds: [newEmbed]});
         } else {
             interaction.reply("``Dienos juokas rodomas nuo 13:00. \n\n Norintiems dienos juoka gauti anskciau prasome prenumeruoti.``");
