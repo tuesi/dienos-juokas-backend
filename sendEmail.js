@@ -21,7 +21,7 @@ module.exports = {
         "<p>" + joke + "</p>" +
         "<span>" + "Dienos juokas kiekvieną dieną!" + "</span>" +
         "<br>" +
-        "<a href=\"https://www.dienosjuokas.tk\"><big>dienosjuokas.fun</big></a>" +
+        "<a href=\"https://www.dienosjuokas.fun\"><big>dienosjuokas.fun</big></a>" +
         "<br>" +
         "<br>" +
         "<br>" +
