@@ -25,7 +25,7 @@ module.exports = {
         "<br>" +
         "<br>" +
         "<br>" +
-        "<a href=\"" + process.env.BACKEND_LINK + "/unsubscribe?email=" + email + "\"><small>Unsubscribe</small></a>",
+        "<a href=\"" + process.env.BACKEND_LINK + "unsubscribe?email=" + email + "\"><small>Unsubscribe</small></a>",
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
