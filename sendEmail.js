@@ -4,7 +4,7 @@ module.exports = {
   sendEmail(email, joke) {
 
     var transporter = nodemailer.createTransport({
-      host: 'smtp.hostinger.com',
+      host: 'smtp.gmail.com',
       port: '465',
       auth: {
         user: process.env.EMAIL,
