@@ -18,7 +18,7 @@ module.exports = (client, Discord) => {
         loadJoke();
     }, null, true, 'Europe/Vilnius');
 
-    var job = new cron('32 13 * * *', async function () {
+    var job = new cron('00 12 * * *', async function () {
         const newEmbed = new DiscordJS.MessageEmbed()
             .setColor('#FF69B4')
             .setTitle('Dienos Juokas')
