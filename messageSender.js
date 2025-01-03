@@ -8,29 +8,42 @@ const joke = require('./lists/jokeParams');
 const loadJoke = require('./mongodb/loadJoke');
 const DiscordJS = require("discord.js");
 
-module.exports = (client, Discord) => {  
+module.exports = (client, Discord) => {
 
-    var genNewJoke = new cron('59 11 * * *', function(){
+    function delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    var genNewJoke = new cron('59 11 * * *', function () {
         loadJoke();
     }, null, true, 'Europe/Vilnius');
 
-    var job = new cron('00 12 * * *', function() {
+    var job = new cron('32 13 * * *', async function () {
         const newEmbed = new DiscordJS.MessageEmbed()
             .setColor('#FF69B4')
             .setTitle('Dienos Juokas')
             .setDescription(`${joke.joke}`);
 
-            mentions.forEach(mention => {
-                client.users.fetch(mention,false).then((user) => {
-                    user.send({embeds: [newEmbed]}).catch(console.error);
-                });
+        mentions.forEach(mention => {
+            client.users.fetch(mention, false).then((user) => {
+                user.send({ embeds: [newEmbed] }).catch(console.error);
             });
+        });
 
-            emails.forEach(email => {
-                sendEmail.sendEmail(email,joke.joke);
-            });
+        // emails.forEach(email => {
+        //     sendEmail.sendEmail(email,joke.joke);
+        // });
 
-      }, null, true, 'Europe/Vilnius');
-      job.start();
-      genNewJoke.start();
+        for (const email of emails) {
+            try {
+                await sendEmail.sendEmail(email, joke.joke);
+                await delay(1000);
+            } catch (error) {
+                console.error(`Failed to send email to ${email}:`, error);
+            }
+        }
+
+    }, null, true, 'Europe/Vilnius');
+    job.start();
+    genNewJoke.start();
 }

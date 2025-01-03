@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 require('dotenv').config();
 module.exports = {
-  sendEmail(email, joke) {
+  async sendEmail(email, joke) {
 
     var transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
@@ -28,12 +28,15 @@ module.exports = {
         "<a href=\"" + process.env.BACKEND_LINK + "unsubscribe?email=" + email + "\"><small>Unsubscribe</small></a>",
     };
 
-    transporter.sendMail(mailOptions, function (error, info) {
-      if (error) {
-        console.log(error);
-      } else {
+    return new Promise((resolve, reject) => {
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.log(error);
+          return reject(error);
+        }
         console.log('Email sent: ' + info.response);
-      }
-    });
+        resolve(true);
+      });
+    })
   }
 }
